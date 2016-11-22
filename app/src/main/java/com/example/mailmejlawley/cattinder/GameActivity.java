@@ -1,8 +1,7 @@
 package com.example.mailmejlawley.cattinder;
 
-/**
- * Created by cornandcob on 11/19/2016.
- */
+import android.support.v4.app.Fragment;
 
-public class GameActivity {
+public class GameActivity extends SingleFragmentActivity {
+    protected Fragment createFragment() { return new GameActivityFragment(); }
 }

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/tinderwithoutbuttons"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/activity_game">
+
+
+    <Button
+        android:layout_width="168dp"
+        android:layout_height="200dp"
+        android:background="@drawable/hiss"
+        android:layout_marginTop="32dp"
+        android:id="@+id/hiss_btn"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/home_btn"
+        android:layout_alignStart="@+id/home_btn" />
+
+    <Button
+        android:layout_width="168dp"
+        android:layout_height="200dp"
+        android:background="@drawable/pet"
+        android:id="@+id/pet_btn"
+        android:layout_alignBottom="@+id/hiss_btn"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="39dp"
+        android:layout_marginEnd="39dp" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/soundon"
+        android:id="@+id/sound_btn"
+        android:layout_alignBottom="@+id/home_btn"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="29dp"
+        android:layout_marginEnd="29dp"
+        android:layout_alignTop="@+id/home_btn" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/home_btn"
+        android:background="@drawable/home"
+        android:layout_marginBottom="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="55dp"
+        android:layout_marginStart="55dp" />
+
+    <ImageView
+        android:layout_width="325dp"
+        android:layout_height="272dp"
+        android:background="@drawable/greeneyes_blacklonghair_cat"
+        android:id="@+id/cat"
+        android:layout_marginBottom="82dp"
+        android:layout_above="@+id/home_btn"
+        android:layout_toLeftOf="@+id/pet_btn"
+        android:layout_toStartOf="@+id/pet_btn" />
+
+    <ImageView
+        android:layout_width="59dp"
+        android:layout_height="37dp"
+        android:background="@drawable/greenbow"
+        android:id="@+id/neck"
+        android:layout_marginLeft="36dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="74dp"
+        android:layout_alignBottom="@+id/cat"
+        android:layout_toRightOf="@+id/hiss_btn"
+        android:layout_toEndOf="@+id/hiss_btn" />
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="111dp"
+        android:background="@drawable/gradhat"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:id="@+id/hat"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/cat"
+        android:layout_alignStart="@+id/cat" />
+
+    <ImageView
+        android:layout_width="91dp"
+        android:layout_height="34dp"
+        android:background="@drawable/moostache"
+        android:id="@+id/mouth"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp"
+        android:layout_toRightOf="@+id/hiss_btn"
+        android:layout_toEndOf="@+id/hiss_btn"
+        android:layout_above="@+id/neck" />
+
+</RelativeLayout>
