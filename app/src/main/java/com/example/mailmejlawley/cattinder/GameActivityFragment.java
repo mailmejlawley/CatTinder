@@ -1,6 +1,8 @@
 package com.example.mailmejlawley.cattinder;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -148,6 +150,8 @@ public class GameActivityFragment extends Fragment {
     }
 
     private void getCatFromAI(){ // Retrieves the generated cat from the AI class and returns it to the layout.
+
+        /*
         cat = Ai.generateCat(); //
 
         switch (cat.get(0).getFileName() + cat.get(1).getFileName()){
@@ -185,11 +189,17 @@ public class GameActivityFragment extends Fragment {
                 break;
             case ("eyes_yellow"):
                 eyes.setBackgroundResource(R.drawable.eyes_yellow);
+                Bitmap eyes = BitmapFactory.decodeResource(getResources(), R.drawable.eyes_yellow);
                 break;
         }
 
 
 
+        //Canvas canvas = new Canvas(eyes.copy(Bitmap.Config.ARGB_8888,))
+        */
+
+        Bitmap body2 = BitmapFactory.decodeResource(getResources(), R.drawable.bl);
+        Canvas canvas = new Canvas(body2.copy(Bitmap.Config.ARGB_8888, true));
 
 
     }
