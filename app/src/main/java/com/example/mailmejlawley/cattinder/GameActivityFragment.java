@@ -35,11 +35,11 @@ public class GameActivityFragment extends Fragment {
 
     // AI
     private AI Ai = new AI(new ArrayList<String>(Arrays.asList(new String[]
-            {"0\t0\t0\t5\tB\n",
-                    "0\t0\t0\t5\tO\n",
-                    "0\t0\t0\t5\tW\n",
-                    "1\t0\t0\t5\tL\n",
-                    "1\t0\t0\t5\tS\n",
+            {       "0\t0\t0\t5\tB",
+                    "0\t0\t0\t5\tO",
+                    "0\t0\t0\t5\tW",
+                    "1\t0\t0\t5\tL",
+                    "1\t0\t0\t5\tS",
                     "2\t822\t1235\t5\tface_white\n",
                     "2\t822\t1235\t5\tface_brown\n",
                     "3\t837\t1250\t5\teyes_blue\n",
@@ -50,24 +50,24 @@ public class GameActivityFragment extends Fragment {
                     "4\t645\t331\t5\that_graduate\n",
                     "4\t516\t846\t5\that_headband\n",
                     "4\t830\t128\t5\that_top\n",
-                    "4\t0\t0\t5\t-\n",
+                    "4\t0\t0\t5\t-",
                     "5\t685\t1120\t5\tglass_round_black\n",
                     "5\t685\t1120\t5\tglass_round_red\n",
                     "5\t685\t1120\t5\tglass_round_yellow\n",
                     "5\t675\t1200\t5\tglass_square_black\n",
                     "5\t675\t1200\t5\tglass_square_red\n",
                     "5\t675\t1200\t5\tglass_square_yellow\n",
-                    "5\t748\t1192\t5\tglass_sun\n",
+                    "5\t748\t1192\t5\tglass_sun",
                     "5\t875\t1468\t5\tmouth_1\n",
                     "5\t1020\t1461\t5\tmouth_2\n",
                     "5\t942\t1611\t5\tneck_black\n",
-                    "5\t942\t1611\t5\tneck_blue\n",
-                    "5\t942\t1611\t5\tneck_green\n",
-                    "5\t942\t1611\t5\tneck_orange\n",
-                    "5\t942\t1611\t5\tneck_purple\n",
-                    "5\t942\t1611\t5\tneck_red\n",
-                    "5\t942\t1611\t5\tneck_white\n",
-                    "5\t942\t1611\t5\tneck_yellow\n",
+                    "5\t942\t1611\t5\tneck_blue",
+                    "5\t942\t1611\t5\tneck_green",
+                    "5\t942\t1611\t5\tneck_orange",
+                    "5\t942\t1611\t5\tneck_purple",
+                    "5\t942\t1611\t5\tneck_red",
+                    "5\t942\t1611\t5\tneck_white",
+                    "5\t942\t1611\t5\tneck_yellow",
                     "5\t0\t0\t5\t-"
             })));
     private ArrayList<Feature> cat;
@@ -148,7 +148,7 @@ public class GameActivityFragment extends Fragment {
             HomeActivity.flag = false;
         }
     }
-
+/*
     private void randomize() {
         final float scale = getResources().getDisplayMetrics().density;
 
@@ -186,7 +186,7 @@ public class GameActivityFragment extends Fragment {
         layout.addView(mouth_change, params_mouth);
 
     }
-
+*/
     private void getCatFromAI(){ // Retrieves the generated cat from the AI class and returns it to the layout.
 
 
@@ -212,6 +212,7 @@ public class GameActivityFragment extends Fragment {
                 body.setBackgroundResource(R.drawable.ws);
                 break;
         }
+        /*
         switch (cat.get(2).getFileName()) {
             case ("face_white"):
                 eyes.setBackgroundResource(R.drawable.face_white);
@@ -220,6 +221,7 @@ public class GameActivityFragment extends Fragment {
                 eyes.setBackgroundResource(R.drawable.face_brown);
                 break;
         }
+        */
         switch (cat.get(3).getFileName()) {
             case ("eyes_blue"):
                 eyes.setBackgroundResource(R.drawable.eyes_blue);
@@ -319,8 +321,8 @@ public class GameActivityFragment extends Fragment {
     private void pickHiss() { // Tells AI to react negatively and calls getCatFromAI
         hissSound.start();
         Ai.react(false);
-        //getCatFromAI();
-        randomize();
+        getCatFromAI();
+        //randomize();
     }
 
     private void pickPet() { // Tells AI to react positively and calls getCatFromAI
