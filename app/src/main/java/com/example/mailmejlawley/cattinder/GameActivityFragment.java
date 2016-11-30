@@ -1,5 +1,6 @@
 package com.example.mailmejlawley.cattinder;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,8 @@ import android.media.MediaPlayer;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import java.util.ArrayList;
+
 public class GameActivityFragment extends Fragment {
 
     private RelativeLayout layout;
@@ -21,10 +24,15 @@ public class GameActivityFragment extends Fragment {
     private Button pickHiss;
     private Button pickPet;
 
-    private ImageView cat;
+    private ImageView body;
+    private ImageView eyes;
     private ImageView hat;
     private ImageView neck;
     private ImageView mouth;
+
+    // AI
+    private AI Ai = new AI();
+    private ArrayList<Feature> cat;
 
     @Nullable
     @Override
@@ -41,7 +49,8 @@ public class GameActivityFragment extends Fragment {
         pickPet = (Button) v.findViewById(R.id.pet_btn);
 
         hat = (ImageView) v.findViewById(R.id.hat);
-        cat = (ImageView) v.findViewById(R.id.cat);
+        body = (ImageView) v.findViewById(R.id.cat);
+        eyes = (ImageView) v.findViewById(R.id.eyes);
         neck = (ImageView) v.findViewById(R.id.neck);
         mouth = (ImageView) v.findViewById(R.id.mouth);
 
@@ -104,7 +113,7 @@ public class GameActivityFragment extends Fragment {
         final float scale = getResources().getDisplayMetrics().density;
 
         // What to change current items to:
-        cat.setBackgroundResource(R.drawable.yelloweyes_whiteshorthair_cat);
+        body.setBackgroundResource(R.drawable.yelloweyes_whiteshorthair_cat);
         hat.setBackgroundResource(0); // 0 = remove current image from hat
         neck.setBackgroundResource(R.drawable.blackbow); // neck positioning doesn't need to change
         mouth.setBackgroundResource(0); // remove current image from mouth
@@ -138,15 +147,64 @@ public class GameActivityFragment extends Fragment {
 
     }
 
-    private void pickHiss() {
-        hissSound.start();
-        randomize();
+    private void getCatFromAI(){ // Retrieves the generated cat from the AI class and returns it to the layout.
+        cat = Ai.generateCat(); //
+
+        switch (cat.get(0).getFileName() + cat.get(1).getFileName()){
+            case "bl":
+                body.setBackgroundResource(R.drawable.bl);
+                break;
+            case "bs":
+                body.setBackgroundResource(R.drawable.bs);
+                break;
+            case "ol":
+                body.setBackgroundResource(R.drawable.ol);
+                break;
+            case "os":
+                body.setBackgroundResource(R.drawable.os);
+                break;
+            case "wl":
+                body.setBackgroundResource(R.drawable.wl);
+                break;
+            case "ws":
+                body.setBackgroundResource(R.drawable.ws);
+                break;
+        }
+        switch (cat.get(2).getFileName()){
+            case ("face_white"):
+                eyes.setBackgroundResource(R.drawable.face_white);
+                break;
+            case ("face_brown"):
+                eyes.setBackgroundResource(R.drawable.face_brown);
+                break;
+            case ("eyes_blue"):
+                eyes.setBackgroundResource(R.drawable.eyes_blue);
+                break;
+            case ("eyes_green"):
+                eyes.setBackgroundResource(R.drawable.eyes_green);
+                break;
+            case ("eyes_yellow"):
+                eyes.setBackgroundResource(R.drawable.eyes_yellow);
+                break;
+        }
+
+
+
 
 
     }
 
-    private void pickPet() {
+    private void pickHiss() { // Tells AI to react negatively and calls getCatFromAI
+        hissSound.start();
+        Ai.react(false);
+        getCatFromAI();
+        //randomize();
+    }
+
+    private void pickPet() { // Tells AI to react positively and calls getCatFromAI
         petSound.start();
-        randomize();
+        Ai.react(true);
+        getCatFromAI();
+        //randomize();
     }
 }
