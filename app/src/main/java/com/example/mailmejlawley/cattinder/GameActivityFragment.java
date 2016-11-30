@@ -17,6 +17,8 @@ import android.widget.RelativeLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
+// Changes were made. GIthub. ya jerk.
 public class GameActivityFragment extends Fragment {
 
     private RelativeLayout layout;
