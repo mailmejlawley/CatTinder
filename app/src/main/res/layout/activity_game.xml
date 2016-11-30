@@ -72,8 +72,9 @@
         android:id="@+id/hat"
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/cat"
-        android:layout_alignStart="@+id/cat" />
-
+        android:layout_alignStart="@+id/cat"
+        />
+<!--
     <ImageView
         android:layout_width="91dp"
         android:layout_height="34dp"
@@ -84,7 +85,7 @@
         android:layout_toRightOf="@+id/hiss_btn"
         android:layout_toEndOf="@+id/hiss_btn"
         android:layout_above="@+id/neck" />
-
+-->
     <ImageView
         android:layout_width="500dp"
         android:layout_height="500dp"
@@ -103,8 +104,10 @@
         android:background="@drawable/eyes_green"
         android:id="@+id/eyes"
         android:layout_marginTop="26dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
         android:layout_below="@+id/hat"
-        android:layout_alignRight="@+id/mouth"
-        android:layout_alignEnd="@+id/mouth" />
+        android:layout_toRightOf="@+id/hiss_btn"
+        android:layout_toEndOf="@+id/hiss_btn" />
 
 </RelativeLayout>
