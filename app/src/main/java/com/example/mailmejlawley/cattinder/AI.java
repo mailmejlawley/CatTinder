@@ -38,7 +38,7 @@ class AI
             //AssetManager am = context.getAssets();
             //InputStream is = am.open("test.txt");
             //BufferedReader f = getResources().openRawResource(R.raw.List);
-            BufferedReader f = new BufferedReader(new FileReader("List.txt"));
+            BufferedReader f = new BufferedReader(new FileReader("list.txt"));
 
 
             String line;
@@ -157,7 +157,7 @@ class AI
     public void close()
     {
         try {
-            java.io.PrintWriter w = new java.io.PrintWriter("List.txt", "UTF-8");
+            java.io.PrintWriter w = new java.io.PrintWriter("list.txt", "UTF-8");
 
             for(int i = 0; i < featureArray.size(); i++)
             {

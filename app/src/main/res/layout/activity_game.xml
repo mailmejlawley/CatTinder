@@ -52,16 +52,6 @@
         android:layout_marginStart="55dp" />
 
     <ImageView
-        android:layout_width="325dp"
-        android:layout_height="272dp"
-        android:background="@drawable/greeneyes_blacklonghair_cat"
-        android:id="@+id/cat"
-        android:layout_marginBottom="82dp"
-        android:layout_above="@+id/home_btn"
-        android:layout_toLeftOf="@+id/pet_btn"
-        android:layout_toStartOf="@+id/pet_btn" />
-
-    <ImageView
         android:layout_width="59dp"
         android:layout_height="37dp"
         android:background="@drawable/greenbow"
@@ -94,5 +84,27 @@
         android:layout_toRightOf="@+id/hiss_btn"
         android:layout_toEndOf="@+id/hiss_btn"
         android:layout_above="@+id/neck" />
+
+    <ImageView
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:background="@drawable/wl"
+        android:id="@+id/cat"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_alignBottom="@+id/sound_btn"
+        android:layout_alignLeft="@+id/home_btn"
+        android:layout_alignStart="@+id/home_btn"
+        android:layout_marginBottom="87dp" />
+
+    <ImageView
+        android:layout_width="103dp"
+        android:layout_height="17dp"
+        android:background="@drawable/eyes_green"
+        android:id="@+id/eyes"
+        android:layout_marginTop="26dp"
+        android:layout_below="@+id/hat"
+        android:layout_alignRight="@+id/mouth"
+        android:layout_alignEnd="@+id/mouth" />
 
 </RelativeLayout>
