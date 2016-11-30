@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.INotificationSideChannel;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,16 @@ public class GameActivityFragment extends Fragment {
     private ImageView eyes;
     private ImageView hat;
     private ImageView neck;
-    private ImageView mouth;
+   // private ImageView mouth;
+/*
+    // Evil and satan
+    private ImageView bl;
+    private ImageView bs;
+    private ImageView ol;
+    private ImageView os;
+    private ImageView wl;
+    private ImageView ws;
+*/
 
     // AI
     private AI Ai = new AI(new ArrayList<String>(Arrays.asList(new String[]
@@ -42,27 +52,28 @@ public class GameActivityFragment extends Fragment {
                     "0\t0\t0\t5\tW",
                     "1\t0\t0\t5\tL",
                     "1\t0\t0\t5\tS",
-                    "2\t822\t1235\t5\tface_white\n",
-                    "2\t822\t1235\t5\tface_brown\n",
-                    "3\t837\t1250\t5\teyes_blue\n",
-                    "3\t837\t1250\t5\teyes_green\n",
-                    "3\t837\t1250\t5\teyes_yellow\n",
-                    "4\t458\t466\t5\that_blue\n",
-                    "4\t458\t466\t5\that_brown\n",
-                    "4\t645\t331\t5\that_graduate\n",
-                    "4\t516\t846\t5\that_headband\n",
-                    "4\t830\t128\t5\that_top\n",
+                    "2\t822\t1235\t5\tface_white",
+                    "2\t822\t1235\t5\tface_brown",
+                    "3\t837\t1250\t5\teyes_blue",
+                    "3\t837\t1250\t5\teyes_green",
+                    "3\t837\t1250\t5\teyes_yellow",
+                    "3\t837\t1250\t5\tno",
+                    "4\t458\t466\t5\that_blue",
+                    "4\t458\t466\t5\that_brown",
+                    "4\t645\t331\t5\that_graduate",
+                    "4\t516\t846\t5\that_headband",
+                    "4\t830\t128\t5\that_top",
                     "4\t0\t0\t5\t-",
-                    "5\t685\t1120\t5\tglass_round_black\n",
-                    "5\t685\t1120\t5\tglass_round_red\n",
-                    "5\t685\t1120\t5\tglass_round_yellow\n",
-                    "5\t675\t1200\t5\tglass_square_black\n",
-                    "5\t675\t1200\t5\tglass_square_red\n",
-                    "5\t675\t1200\t5\tglass_square_yellow\n",
+                    "5\t685\t1120\t5\tglass_round_black",
+                    "5\t685\t1120\t5\tglass_round_red",
+                    "5\t685\t1120\t5\tglass_round_yellow",
+                    "5\t675\t1200\t5\tglass_square_black",
+                    "5\t675\t1200\t5\tglass_square_red",
+                    "5\t675\t1200\t5\tglass_square_yellow",
                     "5\t748\t1192\t5\tglass_sun",
-                    "5\t875\t1468\t5\tmouth_1\n",
-                    "5\t1020\t1461\t5\tmouth_2\n",
-                    "5\t942\t1611\t5\tneck_black\n",
+                    "5\t875\t1468\t5\tmouth_1",
+                    "5\t1020\t1461\t5\tmouth_2",
+                    "5\t942\t1611\t5\tneck_black",
                     "5\t942\t1611\t5\tneck_blue",
                     "5\t942\t1611\t5\tneck_green",
                     "5\t942\t1611\t5\tneck_orange",
@@ -79,7 +90,7 @@ public class GameActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_game, container, false);
 
-        getCatFromAI();
+
 
         layout = (RelativeLayout) v.findViewById(R.id.activity_game);
         hissSound = MediaPlayer.create(this.getContext(), R.raw.angry);
@@ -94,7 +105,17 @@ public class GameActivityFragment extends Fragment {
         body = (ImageView) v.findViewById(R.id.cat);
         eyes = (ImageView) v.findViewById(R.id.eyes);
         neck = (ImageView) v.findViewById(R.id.neck);
-        mouth = (ImageView) v.findViewById(R.id.mouth);
+       // mouth = (ImageView) v.findViewById(R.id.mouth);
+/*
+        // fjdaslk;fjadksl
+        bl = (ImageView) v.findViewById(R.id.bl);
+        bs = (ImageView) v.findViewById(R.id.bs);
+        ol = (ImageView) v.findViewById(R.id.ol);
+        os = (ImageView) v.findViewById(R.id.os);
+        wl = (ImageView) v.findViewById(R.id.wl);
+        ws = (ImageView) v.findViewById(R.id.ws);
+*/
+        getCatFromAI();
 
         if (HomeActivity.flag)
             toggleVolume.setBackgroundResource(R.drawable.soundoff);
@@ -193,28 +214,57 @@ public class GameActivityFragment extends Fragment {
 
 
         cat = Ai.generateCat(); //
-
+/*
+        {
+            bl.setVisibility(View.INVISIBLE);
+            bs.setVisibility(View.INVISIBLE);
+            ol.setVisibility(View.INVISIBLE);
+            os.setVisibility(View.INVISIBLE);
+            wl.setVisibility(View.INVISIBLE);
+            ws.setVisibility(View.INVISIBLE);
+        }
         switch (cat.get(0).getFileName() + cat.get(1).getFileName()){
             case "bl":
-                body.setBackgroundResource(R.drawable.bl);
+                bl.setVisibility(View.VISIBLE);
                 break;
             case "bs":
-                body.setBackgroundResource(R.drawable.bs);
+                bs.setVisibility(View.VISIBLE);
                 break;
             case "ol":
-                body.setBackgroundResource(R.drawable.ol);
+                ol.setVisibility(View.VISIBLE);
                 break;
             case "os":
-                body.setBackgroundResource(R.drawable.os);
+                os.setVisibility(View.VISIBLE);
                 break;
             case "wl":
-                body.setBackgroundResource(R.drawable.wl);
+                wl.setVisibility(View.VISIBLE);
                 break;
             case "ws":
+                ws.setVisibility(View.VISIBLE);
+                break;
+        }
+*/
+        switch (cat.get(0).getFileName() + cat.get(1).getFileName()){
+            case "BL":
+                body.setBackgroundResource(R.drawable.bl);
+                break;
+            case "BS":
+                body.setBackgroundResource(R.drawable.bs);
+                break;
+            case "OL":
+                body.setBackgroundResource(R.drawable.ol);
+                break;
+            case "OS":
+                body.setBackgroundResource(R.drawable.os);
+                break;
+            case "WL":
+                body.setBackgroundResource(R.drawable.wl);
+                break;
+            case "WS":
                 body.setBackgroundResource(R.drawable.ws);
                 break;
         }
-        /*
+
         switch (cat.get(2).getFileName()) {
             case ("face_white"):
                 eyes.setBackgroundResource(R.drawable.face_white);
@@ -223,7 +273,7 @@ public class GameActivityFragment extends Fragment {
                 eyes.setBackgroundResource(R.drawable.face_brown);
                 break;
         }
-        */
+
         switch (cat.get(3).getFileName()) {
             case ("eyes_blue"):
                 eyes.setBackgroundResource(R.drawable.eyes_blue);
@@ -235,7 +285,11 @@ public class GameActivityFragment extends Fragment {
                 eyes.setBackgroundResource(R.drawable.eyes_yellow);
                 break;
         }
+        if (cat.get(4).getFileName().equals("-")){
+            hat.setVisibility(View.INVISIBLE);
+        }
 
+        hat.setVisibility(View.VISIBLE);
         switch (cat.get(4).getFileName()) {
             case ("hat_blue"):
                 hat.setBackgroundResource(R.drawable.hat_blue);
@@ -252,7 +306,11 @@ public class GameActivityFragment extends Fragment {
             case ("hat_top"):
                 hat.setBackgroundResource(R.drawable.hat_top);
                 break;
+            case ("-"):
+                hat.setVisibility(View.INVISIBLE);
+                break;
         }
+        neck.setVisibility(View.VISIBLE);
         switch (cat.get(5).getFileName()){
             case ("glass_round_black"):
                 neck.setBackgroundResource(R.drawable.glass_round_black);
@@ -304,6 +362,9 @@ public class GameActivityFragment extends Fragment {
                 break;
             case ("neck_yellow"):
                 neck.setBackgroundResource(R.drawable.neck_yellow);
+                break;
+            case ("-"):
+                neck.setVisibility(View.INVISIBLE);
                 break;
         }
 
