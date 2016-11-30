@@ -26,6 +26,8 @@ class AI
     private  ArrayList<Feature> cat;
     private  Random rand;
 
+
+
     public AI()
     {
         featureArray = new ArrayList<>();
@@ -86,6 +88,48 @@ class AI
         catch(Exception e)
         {
             System.out.println("Failed to read file");
+        }
+    }
+    public AI(ArrayList<String> list)
+    {
+        featureArray = new ArrayList<>();
+        totalLikes = new ArrayList<>();
+        rand = new Random();
+        String categories = "";
+
+        for(String line : list)
+        {
+            Feature feature = new Feature();
+
+            String elementString = line.substring(0, line.indexOf('\t'));
+            int element = categories.indexOf(elementString);
+
+            line = line.substring(line.indexOf('\t') + 1);
+
+            feature.setX(Integer.parseInt(line.substring(0, line.indexOf('\t'))));
+            line = line.substring(line.indexOf('\t') + 1);
+
+            feature.setY(Integer.parseInt(line.substring(0, line.indexOf('\t'))));
+            line = line.substring(line.indexOf('\t') + 1);
+
+            feature.setLikes(Integer.parseInt(line.substring(0, line.indexOf('\t'))));
+            line = line.substring(line.indexOf('\t') + 1);
+
+            feature.setFileName(line);
+
+            if(element == -1)
+            {
+                categories += elementString;
+                ArrayList<Feature> newList = new ArrayList<>();
+                newList.add(feature);
+                featureArray.add(newList);
+                totalLikes.add(feature.getLikes());
+            }
+            else
+            {
+                featureArray.get(element).add(feature);
+                totalLikes.set(element, totalLikes.get(element) + feature.getLikes());
+            }
         }
     }
 
