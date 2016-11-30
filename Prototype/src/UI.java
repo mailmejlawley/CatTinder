@@ -1,3 +1,5 @@
+package com.cattinder;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +13,26 @@ public class UI
 {
 	public static void main(String[] args)
 	{
-		AI ai = new AI();
+		ArrayList<String> list = new ArrayList<String>();
+		
+		try
+		{
+			BufferedReader f = new BufferedReader(new FileReader("List.txt"));
+			
+			String line;
+			while((line = f.readLine()) != null)
+			{
+				list.add(line);
+			}
+			
+			f.close();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Failed to read file");
+		}
+		
+		AI ai = new AI(list);
 		JDialog jF = new JDialog();
 
         BufferedImage i = new BufferedImage(700, 700, BufferedImage.TYPE_INT_ARGB);
@@ -109,59 +130,46 @@ class AI
 	private ArrayList<Feature> cat;
 	private Random rand;
 
-	public AI()
+	public AI(ArrayList<String> list)
 	{
 		featureArray = new ArrayList<>();
 		totalLikes = new ArrayList<>();
 		rand = new Random();
+		String categories = "";
 
-		try
+		for(String line : list)
 		{
-			BufferedReader f = new BufferedReader(new FileReader("List.txt"));
+			Feature feature = new Feature();
 
-			String line;
-			String categories = "";
+			String elementString = line.substring(0, line.indexOf('\t'));
+			int element = categories.indexOf(elementString);
 
-			while((line = f.readLine()) != null)
+			line = line.substring(line.indexOf('\t') + 1);
+
+			feature.setX(Integer.parseInt(line.substring(0, line.indexOf('\t'))));
+			line = line.substring(line.indexOf('\t') + 1);
+
+			feature.setY(Integer.parseInt(line.substring(0, line.indexOf('\t'))));
+			line = line.substring(line.indexOf('\t') + 1);
+
+			feature.setLikes(Integer.parseInt(line.substring(0, line.indexOf('\t'))));
+			line = line.substring(line.indexOf('\t') + 1);
+
+			feature.setFileName(line);
+
+			if(element == -1)
 			{
-				Feature feature = new Feature();
-
-				String elementString = line.substring(0, line.indexOf('\t'));
-				int element = categories.indexOf(elementString);
-
-				line = line.substring(line.indexOf('\t') + 1);
-
-				feature.setX(Integer.parseInt(line.substring(0, line.indexOf('\t'))));
-				line = line.substring(line.indexOf('\t') + 1);
-
-				feature.setY(Integer.parseInt(line.substring(0, line.indexOf('\t'))));
-				line = line.substring(line.indexOf('\t') + 1);
-
-				feature.setLikes(Integer.parseInt(line.substring(0, line.indexOf('\t'))));
-				line = line.substring(line.indexOf('\t') + 1);
-
-				feature.setFileName(line);
-
-				if(element == -1)
-				{
-					categories += elementString;
-					ArrayList<Feature> newList = new ArrayList<>();
-					newList.add(feature);
-					featureArray.add(newList);
-					totalLikes.add(feature.getLikes());
-				}
-				else
-				{
-					featureArray.get(element).add(feature);
-					totalLikes.set(element, totalLikes.get(element) + feature.getLikes());
-				}
+				categories += elementString;
+				ArrayList<Feature> newList = new ArrayList<>();
+				newList.add(feature);
+				featureArray.add(newList);
+				totalLikes.add(feature.getLikes());
 			}
-
-            f.close();
-		}
-		catch(Exception e)
-		{
-			System.out.println("Failed to read file");
+			else
+			{
+				featureArray.get(element).add(feature);
+				totalLikes.set(element, totalLikes.get(element) + feature.getLikes());
+			}
 		}
 	}
 
