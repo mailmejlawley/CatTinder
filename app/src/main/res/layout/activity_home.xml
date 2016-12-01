@@ -12,7 +12,8 @@
         android:background="@drawable/setting"
         android:id="@+id/settings_btn"
         android:layout_alignBottom="@+id/play_btn"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible" />
 
     <Button
         android:layout_width="150dp"

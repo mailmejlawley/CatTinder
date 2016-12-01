@@ -13,7 +13,6 @@ public class HomeActivity extends Activity {
     static boolean flag = false;   // used for volume toggle
 
     private Button playGame;
-    private Button viewSettings;
     static Button toggleVolume;
 
     @Override
@@ -26,19 +25,12 @@ public class HomeActivity extends Activity {
         homeSound.start();
 
         playGame = (Button) findViewById(R.id.play_btn);
-        viewSettings = (Button) findViewById(R.id.settings_btn);
         toggleVolume = (Button) findViewById(R.id.sound_btn);
 
         playGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 playGame();
-            }
-        });
-        viewSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewSettings();
             }
         });
         toggleVolume.setOnClickListener(new View.OnClickListener() {
@@ -54,11 +46,7 @@ public class HomeActivity extends Activity {
             Intent intent = new Intent(this, GameActivity.class);
             startActivity(intent);
         }
-    private void viewSettings() {
-        buttonClick.start();
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
-    }
+
 
     private void toggleVolume() {
         if (!flag) {
