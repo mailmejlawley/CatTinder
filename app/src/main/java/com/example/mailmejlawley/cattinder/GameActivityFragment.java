@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.media.MediaPlayer;
 import android.widget.ImageView;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -21,7 +20,7 @@ public class GameActivityFragment extends Fragment
     private MediaPlayer hissSound, petSound;
     private Button toggleVolume, goHome, pickHiss, pickPet;
     private ImageView cat;
-    private AI ai = new AI(new ArrayList<String>(Arrays.asList(new String[]
+    private AI ai = new AI(new ArrayList<>(Arrays.asList(new String[]
             {       "0\t0\t0\t5\tb",
                     "0\t0\t0\t5\to",
                     "0\t0\t0\t5\tw",
@@ -60,7 +59,8 @@ public class GameActivityFragment extends Fragment
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         View v = inflater.inflate(R.layout.activity_game, container, false);
 
         hissSound = MediaPlayer.create(this.getContext(), R.raw.angry);
@@ -110,12 +110,14 @@ public class GameActivityFragment extends Fragment
 
     private void goHome()
     {
-        HomeActivity.buttonClick.start();
         if (HomeActivity.flag)
             HomeActivity.toggleVolume.setBackgroundResource(R.drawable.soundoff);
         else if (!HomeActivity.flag)
+        {
+            HomeActivity.buttonClick.start();
             HomeActivity.toggleVolume.setBackgroundResource(R.drawable.soundon);
-        getActivity().onBackPressed(); // close this fragment
+        }
+        getActivity().onBackPressed();
     }
 
     private void toggleVolume()

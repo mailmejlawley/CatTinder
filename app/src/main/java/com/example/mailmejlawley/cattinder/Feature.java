@@ -1,10 +1,5 @@
 package com.example.mailmejlawley.cattinder;
 
-/**
- * Created by Ken on 11/29/2016.
- */
-
-
 class Feature
 {
     private int likes, offsetX, offsetY;
@@ -62,8 +57,7 @@ class Feature
             likes--;
             return true;
         }
-        else
-            return false;
+        return false;
     }
 
     public String toString() //Debug
